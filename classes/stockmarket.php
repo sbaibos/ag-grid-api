@@ -16,6 +16,16 @@ class Project
     public $adj_high;
     public $adj_low;
 
+    public $name;
+    public $account;
+    public $calls;
+    public $minutes;
+
+    public $callRecords0name;
+    public $callRecords0callId;
+    public $callRecords0duration;
+    public $callRecords0switchCode;
+
     // constructor with $db as database connection
     public function __construct($db)
     {
@@ -73,7 +83,17 @@ class Project
         return $prepared;
     }
 
+ // read mytable  stock market
+ function readMytable()
+ {
 
+
+     $query = "SELECT * FROM mytable " ;
+     $prepared = $this->conn->prepare($query);
+     $prepared->execute();
+
+     return $prepared;
+ }
 
 
 

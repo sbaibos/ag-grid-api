@@ -10,14 +10,15 @@ $database = new Database();
 
 $project = new Project($database->getConnection());
 
-$read = $project->readTorondo();
+$read = $project->readMytable();
 $num = $read->rowCount();
 
 if($num>0){
  
     // products array
-    $stock_arr=array();
-    $stock_arr["Torondo"]=array();
+    $master_arr=array();
+    //$details_arr=array();
+    //$master_arr["Torondo"]=array();
     
  
     // retrieve our table contents
@@ -30,27 +31,28 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
- 
+
+        
         $project_item=array(
-            "date" => $date,
-            "open" => $open,
-			"high" => $high,
-			"low"=>$low,                        
-            "close"=>$close,
-			"volume"=>$volume,
-			"adj_volume"=>$adj_volume,
-            "adj_high"=>$adj_high,
-            "adj_low"=>$adj_low  
-        );
+            "name" => $name,
+            "account" => $account,
+			"calls" => $calls,
+            "minutes"=>$minutes,
+            "callRecords" =>array("callRecords0name"=>$callRecords0name,
+			"callRecords0callId"=>$callRecords0callId,
+			"callRecords0duration"=>$callRecords0duration,
+            "callRecords0switchCode"=>$callRecords0switchCode),                        
+            
+                    );
  
-        array_push($stock_arr['Torondo'], $project_item);
+        array_push($master_arr, $project_item);
     }
  
     // set response code - 200 OK
     http_response_code(200);
  
     // show products data in json format
-    echo json_encode($stock_arr);
+    echo json_encode($master_arr);
 }
  
 else{
