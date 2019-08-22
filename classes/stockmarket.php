@@ -95,6 +95,19 @@ class Project
      return $prepared;
  }
 
+ // read all tables from  stock market
+ function readStock()
+ {
+
+
+     //$query = "SELECT stock_market.name, athens_stock.date FROM athens_stock INNER JOIN stock_market on stock_market.name = athens_stock.name" ;
+	 $query = "SELECT * from athens_stock" ;
+     $prepared = $this->conn->prepare($query);
+     $prepared->execute();
+
+     return $prepared;
+ }
+
 
 
 //     // read project by id
