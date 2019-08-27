@@ -101,7 +101,7 @@ class Project
 
 
      //$query = "SELECT stock_market.name, athens_stock.date FROM athens_stock INNER JOIN stock_market on stock_market.name = athens_stock.name" ;
-	 $query = "SELECT * from athens_stock" ;
+	 $query = "SELECT * from athens_stock order by name " ;
      $prepared = $this->conn->prepare($query);
      $prepared->execute();
 
