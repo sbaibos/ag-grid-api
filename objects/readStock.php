@@ -35,8 +35,7 @@ if($num>0){
        extract($row);
  
          $project_item=array(
-            "name" => $name, 
-			"stock"=>array(
+             "name" => $name,
 			  "date" => $date,
              "open" => $open,
 			 "high" => $high,
@@ -46,7 +45,7 @@ if($num>0){
 			 "adj_volume"=>$adj_volume,
              "adj_high"=>$adj_high,
             "adj_low"=>$adj_low 
-			)			
+					
 			      
        );
 	   
