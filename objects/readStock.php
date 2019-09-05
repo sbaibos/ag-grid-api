@@ -37,14 +37,14 @@ if($num>0){
          $project_item=array(
              "name" => $name,
 			  "date" => $date,
-             "open" => $open,
-			 "high" => $high,
-			 "low"=>$low,                        
-             "close"=>$close,
-			 "volume"=>$volume,
-			 "adj_volume"=>$adj_volume,
-             "adj_high"=>$adj_high,
-            "adj_low"=>$adj_low 
+             "open" => floatval($open),
+			 "high" => floatval($high),
+			 "low"=>floatval($low),                        
+             "close"=>floatval($close),
+			 "volume"=>intval($volume),
+			 "adj_volume"=>floatval($adj_volume),
+             "adj_high"=>floatval($adj_high),
+            "adj_low"=>floatval($adj_low)
 					
 			      
        );
