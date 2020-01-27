@@ -34,14 +34,10 @@ INSERT INTO `myprojects7`.`projects` (`id`, `name`, `employer`, `dateStartEnd`, 
 	
 	//update
 	
-	{"id":"1","name": "Patrio Homa2",
-	  "employer": "freelancing2",
-	  "dateStartEnd": "2010 -2010", 
-	  "description": "1A blog-forum -news site done in Drupal 6. The articles are categorised. According to category are fit into specific panel. New article goes to top section of panel. Older articles go to read more section automatically.The site is also multilingual and includes the rather complicated Drupal tool panels ",           
-      "analyticalDescription": "http://sbaibos.com/patrio2.html",
-      "siteUrl": "http://www.sbaibos.com/patrio2/",
-      "photo": "http://sbaibos.com2/img/patrio_main.jpg",
-      "technologiesUsed": "2Drupal 6, Drupal tools, CSS" }
+	
+
+
+[{"name":"","date":"0000-00-00","open":1,"high":1,"low":0,"close":0,"volume":0,"adj_volume":0,"adj_high":0,"adj_low":0}]
 
 
       //create user

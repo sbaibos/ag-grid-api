@@ -8,9 +8,9 @@ require_once "../classes/database.php";
 
 $database = new Database();
 
-$project = new Project($database->getConnection());
+$stockmarket = new Stockmarket($database->getConnection());
 
-$read = $project->readStock();
+$read = $stockmarket->readStock();
 $num = $read->rowCount();
 
 if($num>0){

@@ -1,6 +1,6 @@
 <?php
 
-class Project
+class Stockmarket
 {
 // database connection 
     private $conn;
@@ -114,7 +114,7 @@ class Project
 //     function read_by_id()
 //     {
 //         //query with positional parameters
-//         $query = "SELECT id, name, employer, dateStartEnd, description, analyticalDescription, siteUrl, photo, technologiesUsed, created FROM projects WHERE id = ? LIMIT
+//         $query = "SELECT id, name, date, open, high, low, close, volume, adj_open, created FROM projects WHERE id = ? LIMIT
 //         0,1";
 //         $prepared = $this->conn->prepare($query);
        
@@ -148,29 +148,29 @@ class Project
 //     {
 
 //         //query with named parameters
-//         $query = "INSERT INTO projects SET name=:name, employer=:employer, dateStartEnd=:dateStartEnd, description=:description, analyticalDescription=:analyticalDescription, siteUrl=:siteUrl, photo=:photo, technologiesUsed=:technologiesUsed, created=:created";
+//         $query = "INSERT INTO projects SET name=:name, date=:date, open=:open, high=:high, low=:low, close=:close, volume=:volume, adj_open=:adj_open, created=:created";
 //         $prepared = $this->conn->prepare($query);
 
 //         $this->name = htmlspecialchars(strip_tags($this->name));
-//         $this->employer = htmlspecialchars(strip_tags($this->employer));
-//         $this->dateStartEnd = htmlspecialchars(strip_tags($this->dateStartEnd));
-//         $this->description = htmlspecialchars(strip_tags($this->description));
-//         $this->analyticalDescription = htmlspecialchars(strip_tags($this->analyticalDescription));
-//         $this->siteUrl = htmlspecialchars(strip_tags($this->siteUrl));
-//         $this->photo = htmlspecialchars(strip_tags($this->photo));
-//         $this->technologiesUsed = htmlspecialchars(strip_tags($this->technologiesUsed));
+//         $this->date = htmlspecialchars(strip_tags($this->date));
+//         $this->open = htmlspecialchars(strip_tags($this->open));
+//         $this->high = htmlspecialchars(strip_tags($this->high));
+//         $this->low = htmlspecialchars(strip_tags($this->low));
+//         $this->close = htmlspecialchars(strip_tags($this->close));
+//         $this->volume = htmlspecialchars(strip_tags($this->volume));
+//         $this->adj_open = htmlspecialchars(strip_tags($this->adj_open));
 //         $this->created = htmlspecialchars(strip_tags($this->created));
 
 
 //         // bind values 
 //         $prepared->bindParam(":name", $this->name);
-//         $prepared->bindParam(":employer", $this->employer);
-//         $prepared->bindParam(":dateStartEnd", $this->dateStartEnd);
-//         $prepared->bindParam(":description", $this->description);
-//         $prepared->bindParam(":analyticalDescription", $this->analyticalDescription);
-//         $prepared->bindParam(":siteUrl", $this->siteUrl);
-//         $prepared->bindParam(":photo", $this->photo);
-//         $prepared->bindParam(":technologiesUsed", $this->technologiesUsed);
+//         $prepared->bindParam(":date", $this->date);
+//         $prepared->bindParam(":open", $this->open);
+//         $prepared->bindParam(":high", $this->high);
+//         $prepared->bindParam(":low", $this->low);
+//         $prepared->bindParam(":close", $this->close);
+//         $prepared->bindParam(":volume", $this->volume);
+//         $prepared->bindParam(":adj_open", $this->adj_open);
 //         $prepared->bindParam(":created", $this->created);
 
 //         if ($prepared->execute()) {
@@ -182,48 +182,53 @@ class Project
 //         }
 //     }
 
-// // update projects
-//     function update()
-//     {
+// update projects
+    function updateStock()
+    {
 
-//         $query = "UPDATE projects SET name = :name, employer = :employer, 
-//         dateStartEnd = :dateStartEnd, description = :description, 
-//         analyticalDescription = :analyticalDescription, siteUrl = :siteUrl,
-//         photo = :photo, technologiesUsed = :technologiesUsed
+        $query = "UPDATE athens_stock SET name = :name, date = :date, 
+        open = :open, high = :high, 
+        low = :low, close = :close,
+        volume = :volume, adj_high = :adj_high,
+        adj_low = :adj_low,adj_volume = :adj_volume
     
-//                 WHERE id = :id";
+                WHERE id = :id";
 
-//         $prepared = $this->conn->prepare($query);
-
-
-//         // sanitize
-//         $this->id = htmlspecialchars(strip_tags($this->id));
-//         $this->name = htmlspecialchars(strip_tags($this->name));
-//         $this->employer = htmlspecialchars(strip_tags($this->employer));
-//         $this->dateStartEnd = htmlspecialchars(strip_tags($this->dateStartEnd));
-//         $this->description = htmlspecialchars(strip_tags($this->description));
-//         $this->analyticalDescription = htmlspecialchars(strip_tags($this->analyticalDescription));
-//         $this->siteUrl = htmlspecialchars(strip_tags($this->siteUrl));
-//         $this->photo = htmlspecialchars(strip_tags($this->photo));
-//         $this->technologiesUsed = htmlspecialchars(strip_tags($this->technologiesUsed));
-// // bind values
-//         $prepared->bindParam(':id', $this->id);
-//         $prepared->bindParam(':name', $this->name);
-//         $prepared->bindParam(':employer', $this->employer);
-//         $prepared->bindParam(':dateStartEnd', $this->dateStartEnd);
-//         $prepared->bindParam(':description', $this->description);
-//         $prepared->bindParam(':analyticalDescription', $this->analyticalDescription);
-//         $prepared->bindParam(':siteUrl', $this->siteUrl);
-//         $prepared->bindParam(':photo', $this->photo);
-//         $prepared->bindParam(':technologiesUsed', $this->technologiesUsed);
-
-//         if ($prepared->execute()) {
+        $prepared = $this->conn->prepare($query);
 
 
-//             return true;
-//         } else {
+        // sanitize
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $this->name = htmlspecialchars(strip_tags($this->name));
+       $this->date = htmlspecialchars(strip_tags($this->date));	
+        $this->open = htmlspecialchars(strip_tags($this->open));
+        $this->high = htmlspecialchars(strip_tags($this->high));
+        $this->low = htmlspecialchars(strip_tags($this->low));
+        $this->close = htmlspecialchars(strip_tags($this->close));
+        $this->volume = htmlspecialchars(strip_tags($this->volume));       
+        $this->adj_high = htmlspecialchars(strip_tags($this->adj_high));
+        $this->adj_low = htmlspecialchars(strip_tags($this->adj_low));        
+        $this->adj_volume = htmlspecialchars(strip_tags($this->adj_volume));
+// bind values
+        $prepared->bindParam(':id', $this->id);
+        $prepared->bindParam(':name', $this->name);
+        $prepared->bindParam(':date', $this->date);
+        $prepared->bindParam(':open', $this->open);
+        $prepared->bindParam(':high', $this->high);
+        $prepared->bindParam(':low', $this->low);
+        $prepared->bindParam(':close', $this->close);
+        $prepared->bindParam(':volume', $this->volume);     
+        $prepared->bindParam(':adj_high', $this->adj_high);
+        $prepared->bindParam(':adj_low', $this->adj_low);       
+        $prepared->bindParam(':adj_volume', $this->adj_volume);
 
-//             return false;
-//         }
-//     }
+        if ($prepared->execute()) {
+
+
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 }
