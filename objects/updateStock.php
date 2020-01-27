@@ -8,7 +8,7 @@ $database = new Database();
 
 $stockmarket = new stockmarket($database->getConnection());
 
-$stockmarket->id  = isset($_GET['id']) ? $_GET['id'] : die();
+//$stockmarket->id  = isset($_GET['id']) ? $_GET['id'] : die();  i get id from request body
 
 $data = json_decode(file_get_contents("php://input")); //array of objects
 // get object from array 
@@ -24,7 +24,7 @@ $stockmarket->volume = $object->volume;
 $stockmarket->adj_high = $object->adj_high;
 $stockmarket->adj_low = $object->adj_low;
 $stockmarket->adj_volume = $object->adj_volume;
-
+$stockmarket->id=$object->id;
 
 
 if ($stockmarket->updateStock()) {

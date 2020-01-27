@@ -44,7 +44,8 @@ if($num>0){
 			 "volume"=>intval($volume),
 			 "adj_volume"=>floatval($adj_volume),
              "adj_high"=>floatval($adj_high),
-            "adj_low"=>floatval($adj_low)
+            "adj_low"=>floatval($adj_low),
+			"id"=>floatval($id)
 					
 			      
        );
