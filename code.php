@@ -37,7 +37,14 @@ INSERT INTO `myprojects7`.`projects` (`id`, `name`, `employer`, `dateStartEnd`, 
 	
 
 
-[{"name":"","date":"0000-00-00","open":1,"high":1,"low":0,"close":0,"volume":0,"adj_volume":0,"adj_high":0,"adj_low":0}]
+{"name":"sotos4","date":"2020-11-23","open":1,"high":100,"low":100,"close":100,"volume":2147483647,"adj_volume":0,"adj_high":100,"adj_low":100}
+
+
+{"name":"test","volume":1,"open":1,"high":1,"low":1,"close":1,"adj_volume":1,"adj_high":1,"adj_low":1}
+
+	
+
+not { name: "test", volume: 1, date: "2020-11-4", open: 1, high: 1, low: 1, close: 1, adj_volume: 1, adj_high: 1, adj_low: 1 }
 
 
       //create user

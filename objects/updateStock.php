@@ -12,7 +12,7 @@ $stockmarket = new stockmarket($database->getConnection());
 
 $data = json_decode(file_get_contents("php://input")); //array of objects
 // get object from array 
-$object = $data[0];
+
 //for ($i=0;$i<=11;$i++){
 	 foreach($data as $key => $value) {
 		

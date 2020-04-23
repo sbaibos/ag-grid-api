@@ -8,27 +8,27 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // require include database and object file
-require_once "../classes/project.php";
+require_once "../classes/stockmarket.php";
 require_once "../classes/database.php";
 
 // get database connection
 $database = new Database();
 // prepare project object
-$project = new Project($database->getConnection());
+$stockmarket = new Stockmarket($database->getConnection());
 
 // get project id
-$project->id = isset($_GET['id']) ? $_GET['id'] : die();
+$stockmarket->id = isset($_GET['id']) ? $_GET['id'] : die();
 // set project id to be deleted
-if ($project->delete()) {
+if ($stockmarket->deleteStock()) {
 
     // set response code - 200 ok
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "project was deleted."));
+    echo json_encode(array("message" => "stock was deleted."));
 } else {
 
     http_response_code(503);
 
-    echo json_encode(array("message" => "Unable to delete project"));
+    echo json_encode(array("message" => "Unable to delete stock"));
 }

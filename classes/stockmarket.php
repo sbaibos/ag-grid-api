@@ -7,7 +7,7 @@ class Stockmarket
 
 // object properties
     public $date;
-    public $open;
+	public $open;
     public $high;
     public $low;
     public $close;
@@ -182,7 +182,48 @@ class Stockmarket
 //         }
 //     }
 
-// update projects
+//create stock
+function addStock(){
+	
+	//query with named parameters
+        $query = "INSERT INTO athens_stock SET name = :name, date = :date,open = :open, high = :high,low = :low, close = :close,volume = :volume,adj_high = :adj_high,adj_low = :adj_low,adj_volume = :adj_volume";
+        $prepared = $this->conn->prepare($query);
+
+         // sanitize
+       
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->date = htmlspecialchars(strip_tags($this->date));	
+        $this->open = htmlspecialchars(strip_tags($this->open));
+        $this->high = htmlspecialchars(strip_tags($this->high));
+        $this->low = htmlspecialchars(strip_tags($this->low));
+        $this->close = htmlspecialchars(strip_tags($this->close));
+        $this->volume = htmlspecialchars(strip_tags($this->volume));       
+        $this->adj_high = htmlspecialchars(strip_tags($this->adj_high));
+        $this->adj_low = htmlspecialchars(strip_tags($this->adj_low));        
+        $this->adj_volume = htmlspecialchars(strip_tags($this->adj_volume));
+// bind values
+       
+        $prepared->bindParam(':name', $this->name);
+        $prepared->bindParam(':date', $this->date);
+        $prepared->bindParam(':open', $this->open);
+        $prepared->bindParam(':high', $this->high);
+        $prepared->bindParam(':low', $this->low);
+        $prepared->bindParam(':close', $this->close);
+        $prepared->bindParam(':volume', $this->volume);     
+        $prepared->bindParam(':adj_high', $this->adj_high);
+        $prepared->bindParam(':adj_low', $this->adj_low);       
+        $prepared->bindParam(':adj_volume', $this->adj_volume);
+
+        if ($prepared->execute()) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+}
+
+// update stock
     function updateStock()
     {
 
@@ -231,4 +272,25 @@ class Stockmarket
             return false;
         }
     }
+	
+	// delete projects
+    function deleteStock()
+    {
+
+        //query with positional parameters
+        $query = "DELETE from athens_stock where id =?";
+        $prepared = $this->conn->prepare($query);
+       
+        $prepared->bindParam(1, $this->id);
+
+        if ($prepared->execute()) {
+
+            return true;
+        } else {
+
+
+            return false;
+        }
+    }
+	
 }
